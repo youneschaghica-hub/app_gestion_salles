@@ -15,3 +15,14 @@ from models.salle import Salle
 
         self.dao.insert_salle(salle)
         return True, "ajout réussi"
+
+
+def modifier_salle(self, salle: Salle):
+    if not salle.code:
+        return False, "code manquant"
+
+    if salle.capacite < 1:
+        return False, "capacité invalide"
+
+    self.dao.update_salle(salle)
+    return True, "modification réussie"
