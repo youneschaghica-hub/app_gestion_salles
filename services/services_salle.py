@@ -1,10 +1,11 @@
 from Data.dao_salle import DataSalle
+from models.salle import Salle
+
 
 class ServiceSalle:
 
     def __init__(self):
         self.dao = DataSalle()
-from models.salle import Salle
 
     def ajouter_salle(self, salle: Salle):
         if not salle.code or not salle.libelle or not salle.type:
@@ -16,13 +17,18 @@ from models.salle import Salle
         self.dao.insert_salle(salle)
         return True, "ajout réussi"
 
+    def modifier_salle(self, salle: Salle):
+        if not salle.code:
+            return False, "code manquant"
 
-def modifier_salle(self, salle: Salle):
-    if not salle.code:
-        return False, "code manquant"
+        if salle.capacite < 1:
+            return False, "capacité invalide"
 
-    if salle.capacite < 1:
-        return False, "capacité invalide"
+        self.dao.update_salle(salle)
+        return True, "modification réussie"
+    def supprimer_salle(self, code):
+        if not code:
+            return False, "code manquant"
 
-    self.dao.update_salle(salle)
-    return True, "modification réussie"
+        self.dao.delete_salle(code)
+        return True, "suppression réussie"
