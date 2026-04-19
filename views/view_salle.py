@@ -73,3 +73,19 @@ class ViewSalle(ctk.CTk):
         def supprimer(self):
             self.service.supprimer_salle(self.code.get())
             self.lister()
+
+        def rechercher(self):
+            s = self.service.rechercher_salle(self.code.get())
+
+            if s:
+                self.code.delete(0, "end")
+                self.code.insert(0, s.code)
+
+                self.libelle.delete(0, "end")
+                self.libelle.insert(0, s.libelle)
+
+                self.type.delete(0, "end")
+                self.type.insert(0, s.type)
+
+                self.capacite.delete(0, "end")
+                self.capacite.insert(0, s.capacite)
