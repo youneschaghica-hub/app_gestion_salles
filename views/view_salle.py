@@ -32,3 +32,14 @@ class ViewSalle(ctk.CTk):
         ctk.CTkButton(self.frame_btn, text="Modifier").grid(row=0, column=1)
         ctk.CTkButton(self.frame_btn, text="Supprimer").grid(row=0, column=2)
         ctk.CTkButton(self.frame_btn, text="Rechercher").grid(row=0, column=3)
+
+        from tkinter import ttk
+
+        self.tree = ttk.Treeview(self, columns=("code", "libelle", "type", "capacite"), show="headings")
+
+        self.tree.heading("code", text="Code")
+        self.tree.heading("libelle", text="Libelle")
+        self.tree.heading("type", text="Type")
+        self.tree.heading("capacite", text="Capacite")
+
+        self.tree.pack(fill="both", expand=True)
