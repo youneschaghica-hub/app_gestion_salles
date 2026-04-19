@@ -43,3 +43,7 @@ class ViewSalle(ctk.CTk):
         self.tree.heading("capacite", text="Capacite")
 
         self.tree.pack(fill="both", expand=True)
+
+        from services.services_salle import ServiceSalle
+
+        self.service = ServiceSalle()
