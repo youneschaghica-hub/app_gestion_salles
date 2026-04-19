@@ -28,3 +28,13 @@ class DataSalle:
         cursor.execute(sql, values)
         conn.commit()
         conn.close()
+
+    def get_salles(self):
+        conn = self.get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM salle")
+        rows = cursor.fetchall()
+
+        conn.close()
+        return rows
