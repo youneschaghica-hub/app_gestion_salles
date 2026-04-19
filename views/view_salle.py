@@ -47,3 +47,15 @@ class ViewSalle(ctk.CTk):
         from services.services_salle import ServiceSalle
 
         self.service = ServiceSalle()
+
+        from models.salle import Salle
+
+        def ajouter(self):
+            s = Salle(
+                self.code.get(),
+                self.libelle.get(),
+                self.type.get(),
+                int(self.capacite.get())
+            )
+            self.service.ajouter_salle(s)
+            self.lister()
