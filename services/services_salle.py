@@ -34,3 +34,5 @@ class ServiceSalle:
         return True, "suppression réussie"
     def rechercher_salle(self, code):
         return self.dao.get_salle(code)
+    def recuperer_salles(self):
+        return self.dao.get_salles()
