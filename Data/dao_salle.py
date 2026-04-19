@@ -15,3 +15,16 @@ class DataSalle:
             database=config["database"]
         )
         return conn
+
+    from models.salle import Salle
+
+    def insert_salle(self, salle: Salle):
+        conn = self.get_connection()
+        cursor = conn.cursor()
+
+        sql = "INSERT INTO salle (code, libelle, type, capacite) VALUES (%s, %s, %s, %s)"
+        values = (salle.code, salle.libelle, salle.type, salle.capacite)
+
+        cursor.execute(sql, values)
+        conn.commit()
+        conn.close()
